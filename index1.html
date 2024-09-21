@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .captcha-container {
+            margin-bottom: 10px;
+        }
+        .captcha {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            display: inline-block;
+        }
+    </style>
+        .captcha-input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="captcha-container">
+        <span id="captcha" class="captcha"></span> 
+        <button onclick="generateCaptcha()">Refresh</button>
+    </div>
+
+    <form id="captchaForm">
+        <div id="captcha-input"> 
+            <label for="inputCaptcha">Enter Captcha</label>
+            <input type="text" id="inputCaptcha" required>
+        </div>
+    </form>
+
+    <div id="result"></div>
+
+
+    <script>
+
+        
+        function generateCaptcha(){
+            let captcha="";
+            let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqurstuvwxyz0123456789";
+            for(let i = 0; i < 6; i++){
+                captcha = captcha+ chars.charAt(Math.floor(Math.random()*chars.length));
+            }
+            document.getElementById('captcha').textContent = captcha;
+            
+        }
+
+        window.onload = generateCaptcha;
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+
+    <style>
+        .btn1{
+          padding: 15px 25px;
+          background-color: #4CAF50;  
+          border-radius: 15px;
+          border:none;
+          color:white;
+          font-size:24px;
+          outline: none;
+        }
+
+        .btn1:hover{
+            background-color: #3e8e41;
+        }
+        .btn1:active{
+            /* transform: translateY(4px); */
+            /* transform: scale(1.1); */
+            transform: rotate(10deg);
+        }
+
+        .btn2{
+            padding: 20px;
+          background-color: #F4511e;  
+          border-radius: 4px;
+          border:none;
+          width: 200px;
+          color:white;
+          font-size:28px;
+          outline: none;
+        }
+
+        .btn2 span:after{
+            content:'\266B';
+            margin:5px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .btn2:hover span{
+            padding-right:25px;
+        }
+        .btn2:hover span:after{
+            opacity: 1;
+        }
+        .btn2 span{
+            transition: 0.5s;
+        }
+
+        .btn3{
+            padding: 15px 35px;
+            color: white;
+            background-color: #555;
+            border-radius: 2px;
+            font-size :20px;
+            border:none;
+            position: relative;
+        }
+        .btn3 .badge{
+            position:absolute;
+            top:-10px;
+            right:-10px;
+            padding: 5px 10px;
+            background-color: red;
+            border-radius: 50px;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    
+<button class="btn1">click me</button>
+<button class="btn2"><span>Music</span></button>
+<button class="btn3"><span>Cart</span><span class="badge">3</span></button>
+</body>
+</html>

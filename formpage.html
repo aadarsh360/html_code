@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+
+    <style>
+        .modal{
+            
+            position: fixed;
+            z-index:1;
+            left:25%;
+            right:25%;
+            top:10%;
+            border:1px solid #888;
+            padding: 12px;
+            background-color: wheat;
+        }
+
+        input[type=text], input[type=password]
+        {
+            width:100%;
+            padding: 10px 0px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        button{
+            color:white;
+            background-color: green;
+            width: 100%;
+            border: none;
+            padding:14px 20px;
+            margin:8px 0px;
+        }
+
+        .cancelbtn{
+            background-color: red;
+            width: auto;
+        }
+
+        span.psw{
+            float: right;
+            padding-top: 20px;
+        }
+
+        .container2{
+            background-color: #f1f1f1;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="modal">
+        
+        <form action="" method="">
+            <div class="container1">
+                <b>User Name</b>
+                <input type="text" placeholder="Enter Username">
+
+                <b>Password</b>
+                <input type="password" placeholder="Enter Password">
+
+                <button type="submit">Login</button>
+
+                <input type="checkbox" checked="checked" name="remember">Remember me
+            </div>
+
+            <div class="container2">
+                <button class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot<a href="#">password?</a></span>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

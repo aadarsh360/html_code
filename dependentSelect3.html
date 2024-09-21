@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Form</title>
+
+    <script type="text/javascript" src="dependentSelect3.js" defer></script>
+    <style>
+        .captchaContainer{
+
+            display: inline;
+            padding: 10px;
+        }
+        .captcha{
+            border:solid 1px black;
+            padding: 5px;
+            letter-spacing: 2px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .formDiv{
+            padding: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1>Selected and Captcha Form</h1>
+
+    <label for="state">State:</label>
+    <select name="" id="state" onchange="updateDistrict()">
+        <option value="">Select</option>
+        <option value="uttarPradesh">Uttar Pradesh</option>
+        <option value="madhyaPradesh">Madhya Pradesh</option>
+        <option value="rajasthan">Rajasthan</option>
+    </select>
+
+    <label for="district">District:</label>
+    <select name="" id="district" onchange="showSelected()">
+        <option value="">Select</option>
+    </select>
+
+    <div class="result">
+        <p id="resultText">State : None, District : None</p>
+    </div>
+
+    <div class="captchaContainer">
+        <span>This is Captcha </span>
+        <span class="captcha" id="captcha"></span>
+        <button onclick="generateCaptcha()">Refresh</button>
+    </div>
+
+    <div class="formDiv">
+        <form action="" id="captchaForm">
+            <label for="inputCaptcha">Enter Captcha : </label>
+            <input type="text" id="inputCaptcha" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="captchaResult"></div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaptchaFrom</title>
+
+    <style>
+        .captcha-container{
+            width: 400px;
+            background-color: aliceblue;
+            margin-bottom: 10px;
+        }
+        .captcha-container h1{
+            text-align: center;
+            font-family: arial;
+        }
+        .captcha{
+            background-color: #f2f2f2;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .captcha-input{
+            background-color: aquamarine;
+            height: 50px;
+            width: 100px;
+        }
+        #result{
+            padding: 20px 40px;
+        }
+    </style>
+</head>
+<body>
+    
+        <h1>Fill the Captcha</h1>
+    
+        <div class="captcha-container">
+            <span class="captcha" id="captcha"></span>
+            <button onclick="generateCaptcha()">Refresh</button>
+
+        </div>
+
+        <form id="captchaForm">
+        <div class="captcha-input">
+            <label for="captchaInput">Enter Captcha:</label>
+            <input type="text" id="captchaInput" required>
+            <button type="submit">Submit</button>
+
+        </div>
+       </form>
+    <div id="result">Result</div>
+    
+
+    <script>
+        let captchaText="";
+        function generateCaptcha(){
+            captchaText="";
+             const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+             for(let i = 0; i < 6; i++){
+                captchaText += chars.charAt(Math.floor(Math.random()*chars.length));
+             }
+             document.getElementById('captcha').textContent = captchaText;
+        }
+
+        document.getElementById('captchaForm').addEventListener('submit', function(event){
+            event.preventDefault();
+            
+            let userInput = document.getElementById('captchaInput').value;
+            let resultDiv = document.getElementById('result');
+            if(userInput === captchaText){
+                resultDiv.textContent = "Captcha Varifidy Succesfully!";
+                resultDiv.style.color = 'green';
+            }
+            else{
+                resultDiv.textContent = "InCorrect Captcha !!";
+                resultDiv.style.color = 'red';
+                generateCaptcha();
+            }
+            document.getElementById('captchaInput').value = '';
+        })
+
+        window.onload = generateCaptcha;
+    </script>
+    
+</body>
+</html>

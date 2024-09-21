@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="main">
+        <h1>Captcha Form</h1>
+
+        <div class="captcha-container">
+            <span id="captcha"></span>
+            <button onclick="generateCaptcha()">Refresh</button>
+        </div>
+
+        <form action="" id="captchaForm">
+            <label for="captchaInput">Enter captcha:</label>
+            <input type="text" id="captchaInput" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+
+        let captchaText="";
+        function generateCaptcha(){
+            captchaText = "";
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678";
+            for(let i = 0; i < 6; i++){
+                captchaText+= chars.charAt(Math.floor(Math.random()*chars.length));
+            }
+            document.getElementById("captcha").textContent = captchaText;
+        }
+
+        document.getElementById('captchaForm').addEventListener('submit', function(e){
+            e.preventDefault();
+
+            let userInput = document.getElementById('captchaInput').value;
+            let resultDiv = document.getElementById('result');
+
+            if(userInput === captchaText){
+                resultDiv.textContent = "Captcha verifed Successfully!!";
+                resultDiv.style.color = "green";
+            }
+            else{
+                resultDiv.textContent = "Captcha Incorrect!!";
+                resultDiv.style.color = "red";
+                generateCaptcha();
+            }
+            document.getElementById('cpatchaInput').value='';
+        })
+
+        window.onload = generateCaptcha;
+    </script>
+</body>
+</html>

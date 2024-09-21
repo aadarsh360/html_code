@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Dependent Select</h1>
+
+    <label for="primary">Primary:</label>
+    <select name="" id="primary" onchange="updateSecondary()">
+        <option value="">Select an option</option>
+        <option value="fruits">Fruit</option>
+        <option value="vegetables">Vegetables</option>
+    </select>
+
+    <label for="secondary">Secondary:</label>
+    <select name="" id="secondary" onchange="showSelected()">
+        <option value="">Select</option>
+    </select>
+
+    <div class="result">
+        <p><strong>Primary : </strong> <span id="selectedPrimary">None</span></p>
+        <p><strong>Secondary : </strong> <span id="selectedSecondary">None</span></p>
+    </div>
+
+    <script>
+        
+        const options ={
+            fruits:["Apple", "Mango", "Banana", "Lichi", "Grapes", "Date"],
+            vegetables:["Carrot", "Broccoli", "Tomato", "Potato", "Chili"]
+        };
+
+        function updateSecondary(){
+
+            let primarySelect = document.getElementById('primary');
+            let secondarySelect = document.getElementById('secondary');
+            let selectedOption = primarySelect.value;
+
+            const selectedPrimary = document.getElementById('selectedPrimary');
+            selectedPrimary.textContent = primarySelect.options[primarySelect.selectedIndex].text;
+
+            secondarySelect.innerHTML = '<option value="">Select an option</option>';
+
+            if(selectedOption){
+                options[selectedOption].forEach(function(item){
+                    const option = document.createElement('option');
+                    option.value = item.toLowerCase();
+                    option.textContent = item;
+                    secondarySelect.appendChild(option);
+                });
+            }
+        }
+
+        function showSelected(){
+
+            const secondarySelect = document.getElementById('secondary');
+            const selectedSecondary = document.getElementById('selectedSecondary');
+
+            selectedSecondary.textContent = secondarySelect.options[secondarySelect.selectedIndex].text;
+
+        }
+    </script>
+</body>
+
+</html>
